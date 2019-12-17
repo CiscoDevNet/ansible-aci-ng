@@ -1,0 +1,140 @@
+---
+  - hosts: localhost
+    collections:
+    -  cisco.aci
+    tasks:
+      - aci_ng_fvTenant:
+          host: ' '
+          username: '  '
+          password: ''
+          validate_certs: false
+          name: 'test_ng'
+      - aci_ng_fvAp:
+          host: ' '
+          username: '  '
+          password: ''
+          validate_certs: false
+          name: 'test_ng_ap'
+          tenant: 'test_ng'
+      - aci_ng_fvAEPg:
+          host: ' '
+          username: '  '
+          password: ''
+          validate_certs: false
+          name: 'test_ng_epg'
+          tenant: 'test_ng'
+          application_profile: 'test_ng_ap'
+      - aci_ng_fvBD:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_bd'
+          tenant: 'test_ng'
+      - aci_ng_fvSubnet:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_subnet'
+          bridge_domain: 'test_ng_bd'
+          ip: '10.0.11.12/24'
+          tenant: 'test_ng'
+      - aci_ng_fvCtx:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_vrf'
+          tenant: 'test_ng'
+      - aci_ng_fvEpRetPol:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_ep_ret'
+          tenant: 'test_ng'
+      - aci_ng_vzBrCP:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_contract'
+          tenant: 'test_ng'
+      - aci_ng_vzSubj:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_subj'
+          contract: 'test_ng_contract'
+          tenant: 'test_ng'
+      - aci_ng_vzFilter:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_filter'
+          tenant: 'test_ng'
+      - aci_ng_vzEntry:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_filter'
+          filter: 'test_ng_filter'
+          tenant: 'test_ng'
+      - aci_ng_vzTaboo:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_taboo_contract'
+          tenant: 'test_ng'
+      - aci_ng_infraNodeP:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_leaf'
+      - aci_ng_infraAccPortP:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_acc_port'
+      - aci_ng_infraHPortS:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          leaf_interface_profile: 'test_ng_acc_port'
+          name: 'test_ng_acc'
+          access_port_selector_type: 'range'
+      - aci_ng_infraAttEntityP:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_entity_prof'
+      - aci_ng_infraAccBndlGrp:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_bundle_pol'
+      - aci_ng_infraAccPortGrp:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          name: 'test_ng_port_grp'
+      - aci_ng_infraPortBlk:
+          host: ' '
+          username: '  '
+          password: '  '
+          validate_certs: false
+          leaf_interface_profile: 'test_ng_acc_port'
+          name: 'test_ng_port_blk'
+          access_port_selector: 'test_ng_acc'
+          access_port_selector_type: 'range'
